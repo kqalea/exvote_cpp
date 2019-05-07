@@ -5,12 +5,12 @@
  *      Author: kqalea
  */
 
+#define CATCH_CONFIG_RUNNER
+
 #include<iostream>
 #include<algorithm>
 #include"topic.hpp"
 #include"catch.hpp"
-
-#define CATCH_CONFIG_MAIN
 
 TEST_CASE("Topic TwoSum") {
     Topic topic;
@@ -21,4 +21,10 @@ TEST_CASE("Topic TwoSum") {
     result = topic.twoSum(numbers, target);
     std::sort(result.begin(), result.end());
     REQUIRE(result == answer);
+}
+
+int main(int argc, char* argv[]){
+
+    int result = Catch::Session().run(argc, argv);
+    return result;
 }

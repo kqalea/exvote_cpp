@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.1)
 project(exvote)
 set(CMAKE_CXX_STANDARD 11)
-add_subdirectory(src)
-add_executable(exvote src/main.cpp)
+#add_subdirectory(src)
+add_executable(exvote
+  src/main.cpp /
+  src/catch.hpp /
+  src/topic.cpp /
+  src/topic.hpp
+)
