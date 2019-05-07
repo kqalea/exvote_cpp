@@ -1,3 +1,6 @@
 add_library(src
-  main.cpp
+  main.cpp / 
+  catch.hpp /
+  topic.hpp /
+  topic.cpp
 )
