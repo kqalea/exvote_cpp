@@ -23,6 +23,14 @@ TEST_CASE("Topic TwoSum") {
     REQUIRE(result == answer);
 }
 
+TEST_CASE("Topic isUniqueChars"){
+    Topic topic;
+    string str1 = "hello world";
+    string str2 = "abcdefgh";
+    REQUIRE(!topic.isUniqueChars(str1));
+    REQUIRE(topic.isUniqueChars(str2));
+}
+
 int main(int argc, char* argv[]){
 
     int result = Catch::Session().run(argc, argv);

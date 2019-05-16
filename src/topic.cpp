@@ -23,3 +23,15 @@ vector<int32_t> Topic::twoSum(vector<int32_t> &numbers, int target) {
     }
     throw invalid_argument("No Solution");
 }
+
+bool Topic::isUniqueChars(string str){
+    bool char_set[128] = {0};
+    for(int32_t i = 0; i < (int32_t)str.length(); i++){
+        int val = str.c_str()[i];
+        if(char_set[val]){
+            return false;
+        }
+        char_set[val] = true;
+    }
+    return true;
+}
