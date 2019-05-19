@@ -8,12 +8,12 @@
 #define CATCH_CONFIG_RUNNER
 
 #include<iostream>
-#include<algorithm>
 #include"topic.hpp"
 #include"catch.hpp"
 
+Topic topic;
+
 TEST_CASE("Topic TwoSum") {
-    Topic topic;
     vector<int32_t> numbers { 1, 2, 3, 4 };
     int32_t target = 6;
     vector<int32_t> answer { 1, 3 };
@@ -24,11 +24,28 @@ TEST_CASE("Topic TwoSum") {
 }
 
 TEST_CASE("Topic isUniqueChars"){
-    Topic topic;
     string str1 = "hello world";
     string str2 = "abcdefgh";
     REQUIRE(!topic.isUniqueChars(str1));
     REQUIRE(topic.isUniqueChars(str2));
+}
+
+TEST_CASE("Topic isPermutation"){
+    string str1 = "aabbccdd";
+    string str2 = "bdcaabcd";
+    string str3 = "areyouok";
+    string str4 = "koareasd";
+    REQUIRE(topic.isPermutation(str1, str2));
+    REQUIRE(!topic.isPermutation(str3, str4));
+    REQUIRE(topic.isPermutation_2(str1, str2));
+    REQUIRE(!topic.isPermutation_2(str3, str4));
+}
+
+TEST_CASE("Topic replaceSpaces"){
+    string str1 = "Hi How Are You";
+    string str2 = "Hi%20How%20Are%20You";
+    string str3 = topic.replaceSpaces(str1);
+    REQUIRE(str3.compare(str2) == 0);
 }
 
 int main(int argc, char* argv[]){
