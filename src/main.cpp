@@ -74,6 +74,33 @@ TEST_CASE("Topic strCompress"){
     REQUIRE(str2.compare(str3) == 0);
 }
 
+TEST_CASE("Topic matrixRotate"){
+    vector<vector<int>> fourbyfour = { { 1, 2, 3, 4},
+                                       { 5, 6, 7, 8},
+                                       { 9,10,11,12},
+                                       {13,14,15,16} };
+    vector<vector<int>> answer = { {13, 9, 5, 1},
+                                   {14,10, 6, 2},
+                                   {15,11, 7, 3},
+                                   {16,12, 8, 4}};
+
+    topic.matrixRotate(fourbyfour);
+    bool err = false;
+    int x = answer.size();
+    int y = answer[0].size();
+    for(int i=0; i < x; ++i){
+        if(err) break;
+        for(int j=0; j < y; ++j){
+            if(fourbyfour[i][j] != answer[i][j]){
+                err = true;
+                break;
+            }
+        }
+    }
+    REQUIRE(!err);
+}
+
+
 int main(int argc, char* argv[]){
 
     int result = Catch::Session().run(argc, argv);

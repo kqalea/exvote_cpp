@@ -119,6 +119,22 @@ bool Topic::isOneEditAway(string& str1, string& str2){
 
 }
 
+void Topic::matrixRotate(vector<vector<int>>& matrix){
+
+    int side_length = matrix.size();
+    int x = 0;
+    int y = side_length -1;
+    while(x<y){
+        for(int i = 0; i<(y-x); ++i){
+            std::swap(matrix[x][x+i], matrix[x+i][y]);
+            std::swap(matrix[x][x+i], matrix[y][y-i]);
+            std::swap(matrix[x][x+i], matrix[y-i][x]);
+        }
+        ++x;
+        --y;
+    }
+}
+
 string Topic::replaceSpaces(string& str){
     int space_index = 0;
     int char_index = 0;
