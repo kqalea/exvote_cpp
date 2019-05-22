@@ -69,6 +69,56 @@ bool Topic::isPermutation_2(string& str1, string& str2){
 
 }
 
+bool Topic::isPermutationOfPalindrome(string& str){
+    bitset<26> char_set;
+    int ascii = 0;
+    for(int32_t i = 0; i<str.length(); i++){
+        ascii = str[i];
+        ascii -= 97;
+        char_set.flip(ascii);
+    }
+    if(char_set.none()){
+        return true;
+    }else if ((char_set.to_ulong() & char_set.to_ulong()-1) == 0 ){
+        return true;
+    }
+    return false;
+}
+
+bool Topic::isOneEditAway(string& str1, string& str2){
+    int diff = std::abs((int)str1.length() - (int)str2.length());
+    if ( diff > 1){
+        return false;
+    }
+    string *longstr;
+    string *shortstr;
+    int longidx = 0;
+    int shortidx = 0;
+    bool flag = false;
+
+    if (str1.length() >= str2.length()){
+        longstr = &str1;
+        shortstr = &str2;
+    }else{
+        longstr = &str2;
+        shortstr = &str1;
+    }
+    while(longidx < longstr->length() & shortidx < shortstr->length()){
+        if(longstr->c_str()[longidx] != shortstr->c_str()[shortidx]){
+            if(flag) return false;
+            flag = true;
+            if(diff == 0){
+                shortidx++;
+            }
+        }else{
+            shortidx++;
+        }
+        longidx++;
+    }
+    return true;
+
+}
+
 string Topic::replaceSpaces(string& str){
     int space_index = 0;
     int char_index = 0;

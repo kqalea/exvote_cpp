@@ -2,6 +2,8 @@
 #include<stdint.h>
 #include<string>
 #include<algorithm>
+#include<bitset>
+#include<cstdlib>
 
 using namespace std;
 class Topic {
@@ -11,5 +13,7 @@ public:
     bool isUniqueChars(string& str);
     bool isPermutation(string& str1, string& str2);
     bool isPermutation_2(string& str1, string& str2);
+    bool isPermutationOfPalindrome(string& str);
+    bool isOneEditAway(string& str1, string& str2);
     string replaceSpaces(string& str);
 };

@@ -48,6 +48,26 @@ TEST_CASE("Topic replaceSpaces"){
     REQUIRE(str3.compare(str2) == 0);
 }
 
+TEST_CASE("Topic isPermutationOfPalindrome") {
+    string str1 = "aabbccdd";
+    string str2 = "abcdefgh";
+    REQUIRE(topic.isPermutationOfPalindrome(str1));
+    REQUIRE(!topic.isPermutationOfPalindrome(str2));
+}
+
+
+TEST_CASE("Topic isOneEditAway"){
+    string str1 = "pale";
+    string str2 = "ple";
+    string str3 = "pales";
+    string str4 = "bale";
+    string str5 = "bake";
+    REQUIRE(topic.isOneEditAway(str1, str2));
+    REQUIRE(topic.isOneEditAway(str3, str1));
+    REQUIRE(topic.isOneEditAway(str1, str4));
+    REQUIRE(!topic.isOneEditAway(str1, str5));
+}
+
 int main(int argc, char* argv[]){
 
     int result = Catch::Session().run(argc, argv);
