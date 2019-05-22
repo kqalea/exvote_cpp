@@ -150,4 +150,22 @@ string Topic::replaceSpaces(string& str){
 
 }
 
+string Topic::strCompress(string& str){
+    string target;
+    int compressedSize = 0;
+    int countConsecutive = 0;
+    for(int i=0;i<str.length();i++){
+        countConsecutive++;
+        if(i+1 >= str.length() || str[i] != str[i+1]){
+            target.append(std::to_string(countConsecutive));
+            target.append(str, i, 1);
+            compressedSize = target.length();
+            countConsecutive = 0;
+        }
+        if(compressedSize >= str.length()){
+            return str;
+        }
+    }
+    return target;
 
+}

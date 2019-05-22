@@ -4,6 +4,7 @@
 #include<algorithm>
 #include<bitset>
 #include<cstdlib>
+#include<iostream>
 
 using namespace std;
 class Topic {
@@ -16,4 +17,5 @@ public:
     bool isPermutationOfPalindrome(string& str);
     bool isOneEditAway(string& str1, string& str2);
     string replaceSpaces(string& str);
+    string strCompress(string& str);
 };

@@ -7,7 +7,6 @@
 
 #define CATCH_CONFIG_RUNNER
 
-#include<iostream>
 #include"topic.hpp"
 #include"catch.hpp"
 
@@ -66,6 +65,13 @@ TEST_CASE("Topic isOneEditAway"){
     REQUIRE(topic.isOneEditAway(str3, str1));
     REQUIRE(topic.isOneEditAway(str1, str4));
     REQUIRE(!topic.isOneEditAway(str1, str5));
+}
+
+TEST_CASE("Topic strCompress"){
+    string str1 = "aabcccccaaa";
+    string str2 = "2a1b5c3a";
+    string str3 = topic.strCompress(str1);
+    REQUIRE(str2.compare(str3) == 0);
 }
 
 int main(int argc, char* argv[]){
