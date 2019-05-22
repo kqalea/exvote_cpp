@@ -16,7 +16,9 @@ public:
     bool isPermutation_2(string& str1, string& str2);
     bool isPermutationOfPalindrome(string& str);
     bool isOneEditAway(string& str1, string& str2);
+    bool isSubString(string& str1, string& str2);
     void matrixRotate(vector<vector<int>>& matrix);
+    void setZeroMatrix(vector<vector<int>>& matrix);
     string replaceSpaces(string& str);
     string strCompress(string& str);
 };

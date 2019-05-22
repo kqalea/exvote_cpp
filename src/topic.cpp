@@ -119,6 +119,15 @@ bool Topic::isOneEditAway(string& str1, string& str2){
 
 }
 
+bool Topic::isSubString(string& str1, string& str2){
+    string str3 = str1 + str1;
+    std::size_t found = str3.find(str2);
+    if(found != std::string::npos){
+        return true;
+    }
+    return false;
+}
+
 void Topic::matrixRotate(vector<vector<int>>& matrix){
 
     int side_length = matrix.size();
@@ -132,6 +141,44 @@ void Topic::matrixRotate(vector<vector<int>>& matrix){
         }
         ++x;
         --y;
+    }
+}
+
+void Topic::setZeroMatrix(vector<vector<int>>& matrix){
+    bool isCol;
+    int row = matrix.size();
+    int col = matrix[0].size();
+
+    for(int i = 0; i < row; i++){
+        if(matrix[i][0] == 0){
+            isCol = true;
+        }
+        for(int j = 0; j < col; j++){
+            if(matrix[i][j] == 0){
+                matrix[0][j] = 0;
+                matrix[i][0] = 0;
+            }
+        }
+    }
+
+    for(int i = 1; i < row; i++){
+        for(int j = 1; j < col; j++){
+            if(matrix[i][0] == 0 || matrix[0][j] == 0){
+                matrix[i][j] = 0;
+            }
+        }
+    }
+
+    if(matrix[0][0] == 0){
+        for(int j = 0; j < col; j++){
+            matrix[0][j] = 0;
+        }
+    }
+
+    if(isCol){
+        for(int i = 0; i < row; i++){
+            matrix[i][0] = 0;
+        }
     }
 }
 

@@ -100,6 +100,36 @@ TEST_CASE("Topic matrixRotate"){
     REQUIRE(!err);
 }
 
+TEST_CASE("Topic setZeroMatrix"){
+    vector<vector<int>> target = { { 1, 1, 1, 0},
+                                   { 1, 1, 1, 1},
+                                   { 1, 0, 1, 1},
+                                   { 1, 1, 0, 1} };
+
+    vector<vector<int>> answer = { { 0, 0, 0, 0},
+                                   { 1, 0, 0, 0},
+                                   { 0, 0, 0, 0},
+                                   { 0, 0, 0, 0} };
+    topic.setZeroMatrix(target);
+    bool err = false;
+    for(int i=0; i<target.size(); i++){
+        for(int j=0; j<target[0].size(); j++){
+            if(target[i][j] != answer[i][j]){
+                err = true;
+                break;
+            }
+        }
+        if(err) break;
+    }
+    REQUIRE(!err);
+}
+
+
+TEST_CASE("Topic isSubString"){
+    string str1 = "abcdefg";
+    string str2 = "cdefgab";
+    REQUIRE(topic.isSubString(str1, str2));
+}
 
 int main(int argc, char* argv[]){
 
