@@ -4,7 +4,11 @@ project(exvote)
 #add_subdirectory(src)
 add_executable(exvote
   src/main.cpp /
-  src/catch.hpp /
   src/topic.cpp /
-  src/topic.hpp
+  src/topic.hpp /
+  src/cp1.cpp /
+  src/cp1.hpp /
+  test/catch.hpp /
+  test/test.cpp /
+  test/test1.cpp
 )
