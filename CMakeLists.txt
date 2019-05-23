@@ -8,7 +8,10 @@ add_executable(exvote
   src/topic.hpp /
   src/cp1.cpp /
   src/cp1.hpp /
+  src/cp2.cpp /
+  src/cp2.hpp /
   test/catch.hpp /
   test/test.cpp /
-  test/test1.cpp
+  test/test1.cpp /
+  test/test2.cpp
 )
