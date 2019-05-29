@@ -74,3 +74,69 @@ TEST_CASE("cp2 deleteNode"){
     cout << endl;
     REQUIRE(ans);
 }
+
+TEST_CASE("cp2 partitionList"){
+    list<int> target = {1,4,3,2,5,2};
+    list<int> answer = {1,2,2,4,3,5};
+    cp2.partitionList(target, 3);
+
+    list<int>::iterator it1 = target.begin();
+    list<int>::iterator it2 = answer.begin();
+    bool flag = false;
+    while(it1 != target.end()){
+        if(*it1 != *it2){
+            flag = true;
+            break;
+        }
+        ++it1;
+        ++it2;
+    }
+    REQUIRE(!flag);
+}
+
+TEST_CASE("cp2 addLists"){
+    list<int> l1 = {9,7,8};
+    list<int> l2 = {6,6,6};
+    long ans = 978+666;
+    long test= cp2.addLists(l1,l2);
+    REQUIRE(ans == test);
+}
+
+TEST_CASE("cp2 isPalindrome"){
+    list<int> target1 = {1,2,3,3,2,1};
+    list<int> target2 = {1,2,3,4,3,2,1};
+    list<int> target3 = {1,1,2,2,2,1,1,1};
+    REQUIRE(cp2.isPalindrome(target1) == true);
+    REQUIRE(cp2.isPalindrome(target2) == true);
+    REQUIRE(cp2.isPalindrome(target3) == false);
+}
+
+TEST_CASE("cp2 findIntersection"){
+    CP2_Node *head = new CP2_Node;
+    CP2_Node *walker = head;
+    CP2_Node *target;
+    CP2_Node *test = new CP2_Node;
+    CP2_Node *answer;
+    for(int i=1;i<10;i++){
+        CP2_Node *node = new CP2_Node;
+        walker->next_node = node;
+        walker->next_node->perv_node = walker;
+        walker = walker->next_node;
+        walker->value = i;
+        if(i==5){
+            target = walker;
+            cout << "target " << target << endl;
+        }
+    }
+    walker = test;
+    for(int i=1;i<5;i++){
+        CP2_Node *node = new CP2_Node;
+        walker->next_node = node;
+        walker->next_node->perv_node = walker;
+        walker = walker->next_node;
+        walker->value = i;
+    }
+    walker->next_node = target;
+    answer = cp2.findIntersection(head, test);
+    REQUIRE(answer == target);
+}
