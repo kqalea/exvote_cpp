@@ -36,6 +36,7 @@ public:
     bool isPalindrome(list<int>& list);
     forward_list<int>::iterator nThToLast(forward_list<int>& flist, int k);
     CP2_Node* findIntersection(CP2_Node* list1, CP2_Node* list2);
+    CP2_Node* findBeginning(CP2_Node* head);
 };
 
 

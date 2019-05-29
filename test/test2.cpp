@@ -140,3 +140,22 @@ TEST_CASE("cp2 findIntersection"){
     answer = cp2.findIntersection(head, test);
     REQUIRE(answer == target);
 }
+
+TEST_CASE("cp2 findBeginning"){
+    CP2_Node *head = new CP2_Node;
+    CP2_Node *walker = head;
+    CP2_Node *target;
+    CP2_Node *answer;
+    for(int i=1; i<8; i++){
+        CP2_Node *node = new CP2_Node;
+        walker->next_node = node;
+        walker->next_node->perv_node = walker;
+        walker = walker->next_node;
+        walker->value = i;
+        if(i == 3) target = walker;
+    }
+    walker->next_node = target;
+    answer = cp2.findBeginning(head);
+    REQUIRE(answer == target);
+}
+

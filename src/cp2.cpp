@@ -170,6 +170,29 @@ CP2_Node* CP2::findIntersection(CP2_Node* list1, CP2_Node* list2) {
     return target;
 }
 
+CP2_Node* CP2::findBeginning(CP2_Node* head){
+    CP2_Node* fast = head;
+    CP2_Node* slow = head;
+
+    while(fast->next_node != nullptr && slow->next_node != nullptr){
+        slow = slow->next_node;
+        fast = fast->next_node->next_node;
+        if(slow == fast){
+            break;
+        }
+    }
+    if(fast == nullptr || fast->next_node == nullptr){
+        return nullptr;
+    }
+    slow = head;
+    while(slow != fast){
+        slow = slow->next_node;
+        fast = fast->next_node;
+    }
+    return fast;
+
+}
+
 CP2_Node::CP2_Node() {
     this->next_node = nullptr;
     this->perv_node = nullptr;
