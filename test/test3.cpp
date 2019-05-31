@@ -24,11 +24,37 @@ TEST_CASE("cp3 MuliStack"){
     stack->push(3, 33);
 
     std::vector<int> answer = stack->returnArray();
+    REQUIRE(std::equal(target.begin(),target.end(), answer.begin()));
     for(auto x: answer){
         std::cout << x << ' ' ;
     }
     std::cout << std::endl;
 
-    REQUIRE(std::equal(target.begin(),target.end(), answer.begin()));
+    for(int y=1; y<=3; y++){
+        for(int i=1; i<=3; i++){
+            std::cout <<stack->pop(i) << ' ';
+        }
+    }
+    std::cout << std::endl;
+}
 
+TEST_CASE("cp3 minStack"){
+    CP3_MinStack stack;
+    stack.push(10);
+    stack.push(7);
+    stack.push(8);
+    stack.push(9);
+    stack.push(6);
+    stack.push(6);
+    stack.push(11);
+    std::vector<int> target = {6,6,7,10};
+    std::vector<int> answer;
+    int tmp;
+    int min;
+    for(int i=0;i<7;i++){
+        min = stack.getMin();
+        tmp = stack.pop();
+        if(min == tmp) answer.push_back(min);
+    }
+    REQUIRE(std::equal(target.begin(),target.end(), answer.begin()));
 }

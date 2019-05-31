@@ -10,6 +10,7 @@
 
 
 #include<vector>
+#include<stack>
 #include<algorithm>
 #include<iostream>
 
@@ -28,6 +29,15 @@ private:
 };
 
 
+class CP3_MinStack{
+public:
+    void push(int data);
+    int pop();
+    int getMin();
+private:
+    std::stack<int> mainStack;
+    std::stack<int> minStack;
 
+};
 
 #endif /* SRC_CP3_HPP_ */

@@ -78,3 +78,29 @@ int CP3_Stack::pop(int session_id){
 std::vector<int> CP3_Stack::returnArray(){
     return array;
 }
+
+void CP3_MinStack::push(int data){
+    if(mainStack.size() == 0){
+        mainStack.push(data);
+        minStack.push(data);
+    }else{
+        mainStack.push(data);
+        if(data <= minStack.top()) minStack.push(data);
+    }
+}
+
+int CP3_MinStack::pop(){
+    int p = mainStack.top();
+    mainStack.pop();
+    if(p == minStack.top()) minStack.pop();
+    return p;
+}
+
+int CP3_MinStack::getMin(){
+    if(minStack.size()>0){
+        return minStack.top();
+    }else{
+        return -1;
+    }
+}
+
