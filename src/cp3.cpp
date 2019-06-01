@@ -104,3 +104,77 @@ int CP3_MinStack::getMin(){
     }
 }
 
+void CP3_SetOfStack::push(int data){
+    int size = this->stack.size();
+
+    if(size <= this->stack_size){
+        this->stack.push_back(data);
+    }else{
+        this->stacksCount = size / this->stack_size;
+        this->stack.push_back(data);
+    }
+
+}
+
+int CP3_SetOfStack::pop(){
+    if(this->stack.size() == 0) return -1;
+    int value = this->stack.back();
+    this->stack.pop_back();
+    return value;
+}
+
+int CP3_SetOfStack::getStacksCount(){
+    return stacksCount;
+}
+
+int CP3_SetOfStack::popAt(int stack_id){
+    int val;
+    std::vector<int>::iterator pop_loc = this->stack.begin();
+    if(stack_id > stacksCount || this->stack.size() == 0) return -1;
+    if(stack_id == 0 && stack.size() <= stack_size){
+        val = this->stack.back();
+        this->stacksCount = stack.size() / this->stack_size;
+        return val;
+    }else if(stack_id == 0){
+        pop_loc = pop_loc + stack_size -1;
+        val = *pop_loc;
+        this->stack.erase(pop_loc);
+        this->stacksCount = stack.size() / this->stack_size;
+        return val;
+    }
+    if(this->stack.size() - (stack_id*stack_size) > 10){
+        pop_loc = pop_loc + 10 + (stack_id*stack_size) -1;
+        val = *pop_loc;
+        this->stack.erase(pop_loc);
+        this->stacksCount = stack.size() / this->stack_size;
+        return val;
+    }else{
+        val = this->stack.back();
+        this->stack.pop_back();
+        this->stacksCount = stack.size() / this->stack_size;
+        return val;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

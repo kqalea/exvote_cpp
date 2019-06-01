@@ -58,3 +58,26 @@ TEST_CASE("cp3 minStack"){
     }
     REQUIRE(std::equal(target.begin(),target.end(), answer.begin()));
 }
+
+TEST_CASE("cp3 SetOfStack"){
+    CP3_SetOfStack set_stack;
+    std::vector<int> target = { 1, 2, 3, 4, 5, 6, 7, 8, 9,10,
+                               11,12,13,14,15,16,17,18,19,20,
+                               21,22,23,24,25,26,27,28,29,30 };
+
+    for(auto x : target){
+        set_stack.push(x);
+    }
+
+    std::cout << set_stack.getStacksCount() << std::endl;
+    int ten = set_stack.popAt(0);
+    int twi = set_stack.popAt(1);
+    int trd = set_stack.popAt(2);
+    int fth = set_stack.pop();
+
+    REQUIRE(ten==10);
+    REQUIRE(twi==21);
+    REQUIRE(trd==30);
+    REQUIRE(fth==29);
+
+}

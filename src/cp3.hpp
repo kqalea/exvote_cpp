@@ -40,4 +40,17 @@ private:
 
 };
 
+
+class CP3_SetOfStack{
+public:
+    std::vector<int> stack;
+    void push(int data);
+    int pop();
+    int popAt(int stack_id);
+    int getStacksCount();
+
+    int stacksCount = 0;
+    const int stack_size = 10;
+
+};
 #endif /* SRC_CP3_HPP_ */
