@@ -81,3 +81,23 @@ TEST_CASE("cp3 SetOfStack"){
     REQUIRE(fth==29);
 
 }
+
+TEST_CASE("cp3 MyQueue"){
+    std::queue<int> exp;
+    for(int i=0;i<10;++i){
+        exp.push(i);
+        std::cout << i <<" ";
+    }
+    std::cout << std::endl;
+    CP3_MyQueue<int> myqueue;
+    for(int i=0;i<10;++i){
+        myqueue.add(i);
+    }
+    for(int i=0;i<10;++i){
+        std::cout << myqueue.remove() << " ";
+    }
+    std::cout << std::endl;
+
+}
+
+

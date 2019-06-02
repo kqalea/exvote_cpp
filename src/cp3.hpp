@@ -13,6 +13,7 @@
 #include<stack>
 #include<algorithm>
 #include<iostream>
+#include<queue>
 
 class CP3_Stack{
 public:
@@ -53,4 +54,35 @@ public:
     const int stack_size = 10;
 
 };
+template<typename T>
+class CP3_MyQueue{
+public:
+    int size(){return newstack.size() + oldstack.size();};
+    void add(T data){newstack.push(data);};
+    T peek(){
+        shiftStacks();
+         return oldstack.top();
+    }
+    T remove(){
+        shiftStacks();
+        T t = oldstack.top();
+        oldstack.pop();
+        return t;
+    }
+    void shiftStacks(){
+        if(oldstack.empty()){
+            while(!newstack.empty()){
+               T t = newstack.top();
+               oldstack.push(t);
+               newstack.pop();
+            }
+        }
+    }
+
+private:
+   std::stack<T> newstack;
+   std::stack<T> oldstack;
+
+};
+
 #endif /* SRC_CP3_HPP_ */

@@ -156,25 +156,3 @@ int CP3_SetOfStack::popAt(int stack_id){
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
