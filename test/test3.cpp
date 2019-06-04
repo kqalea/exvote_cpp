@@ -100,4 +100,21 @@ TEST_CASE("cp3 MyQueue"){
 
 }
 
+TEST_CASE("cp3 SortStack"){
+    std::vector<int> target = {5,8,2,1,9,12,7,3};
+    std::stack<int> target_stack;
+    for(auto x : target){
+        target_stack.push(x);
+    }
+    CP3_SortStack<int> o;
+    std::stack<int> answer ;
+    answer = o.sortStack(target_stack);
 
+    while(!answer.empty()){
+        std::cout << answer.top() << ' ';
+        answer.pop();
+    }
+    std::cout<<std::endl;
+
+
+}

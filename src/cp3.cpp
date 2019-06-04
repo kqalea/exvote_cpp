@@ -156,3 +156,68 @@ int CP3_SetOfStack::popAt(int stack_id){
     }
 
 }
+
+void CP3_Animal::enqueue(int i){
+    switch(i){
+    case CP3_Dog:
+        animal dog;
+        dog.type = CP3_Dog;
+        dog.time = this->time;
+        this->dogs.push(dog);
+        ++(this->time);
+        break;
+    case CP3_Cat:
+        animal cat;
+        cat.type = CP3_Cat;
+        cat.time = this->time;
+        this->cats.push(cat);
+        ++(this->time);
+        break;
+    default:
+        break;
+    }
+}
+
+CP3_Animal::animal CP3_Animal::dequeueAny(){
+    animal an;
+    if(dogs.empty() && cats.empty()){
+        return an;
+    }else if(dogs.empty()){
+        an = cats.front();
+        cats.pop();
+        return an;
+    }else{
+        an = dogs.front();
+        dogs.pop();
+        return an;
+    }
+
+    if(dogs.front().time >= cats.front().time){
+        an = dogs.front();
+        dogs.pop();
+        return an;
+    }else{
+        an = cats.front();
+        cats.pop();
+        return an;
+    }
+}
+
+CP3_Animal::animal CP3_Animal::dequeueCat(){
+    animal an;
+    if(!cats.empty()){
+        an = cats.front();
+        cats.pop();
+    }
+    return an;
+}
+
+CP3_Animal::animal CP3_Animal::dequeueDog(){
+    animal an;
+    if(!dogs.empty()){
+        an = dogs.front();
+        dogs.pop();
+    }
+    return an;
+}
+

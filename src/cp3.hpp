@@ -84,5 +84,42 @@ private:
    std::stack<T> oldstack;
 
 };
+template<typename c>
+class CP3_SortStack{
+public:
+     std::stack<c> sortStack(std::stack<c> &input){
+         std::stack<c> tmp_stack;
+         while(!input.empty()){
+             c tmp = input.top();
+             input.pop();
+
+             while(!tmp_stack.empty() && tmp_stack.top() > tmp){
+                 input.push(tmp_stack.top());
+                 tmp_stack.pop();
+             }
+             tmp_stack.push(tmp);
+         }
+         return tmp_stack;
+     }
+};
+
+#define CP3_Dog (1)
+#define CP3_Cat (2)
+
+class CP3_Animal{
+    typedef struct animal{
+        int type = -1;
+        int time = -1;
+    };
+private:
+    std::queue<animal> dogs;
+    std::queue<animal> cats;
+    int time = 0;
+public:
+    void enqueue(int i);
+    animal dequeueAny();
+    animal dequeueCat();
+    animal dequeueDog();
+};
 
 #endif /* SRC_CP3_HPP_ */
