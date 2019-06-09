@@ -159,19 +159,21 @@ int CP3_SetOfStack::popAt(int stack_id){
 
 void CP3_Animal::enqueue(int i){
     switch(i){
-    case CP3_Dog:
-        animal dog;
+    case CP3_Dog:{
+        CP3_Animal::animal dog;
         dog.type = CP3_Dog;
         dog.time = this->time;
         this->dogs.push(dog);
         ++(this->time);
+    }
         break;
-    case CP3_Cat:
-        animal cat;
+    case CP3_Cat:{
+        CP3_Animal::animal cat;
         cat.type = CP3_Cat;
         cat.time = this->time;
         this->cats.push(cat);
         ++(this->time);
+    }
         break;
     default:
         break;

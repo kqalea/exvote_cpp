@@ -4,10 +4,13 @@ project(exvote)
 #add_subdirectory(src)
 add_executable(exvote
   src/main.cpp /
-  src/cp3.hpp src /
-  src/cp3.cpp test /
+  src/cp3.hpp /
+  src/cp3.cpp /
+  src/cp4.hpp /
+  src/cp4.cpp
   test/catch.hpp /
-  test/test3.cpp
+  test/test3.cpp /
+  test/test4.cpp
 )
 #backup
 #add_executable(exvote

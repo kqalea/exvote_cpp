@@ -103,14 +103,15 @@ public:
      }
 };
 
-#define CP3_Dog (1)
-#define CP3_Cat (2)
+#define CP3_Dog 1
+#define CP3_Cat 2
+
 
 class CP3_Animal{
     typedef struct animal{
         int type = -1;
         int time = -1;
-    };
+    }animal;
 private:
     std::queue<animal> dogs;
     std::queue<animal> cats;
