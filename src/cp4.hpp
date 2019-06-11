@@ -23,18 +23,23 @@ typedef struct node{
 }node;
 
 class CP4_Tree{
-    node root;
+public:
+    node *root;
 };
 
 class CP4_Graph{
 private:
     bool directed = false;
-    int nodes;
+    int nodes = 0;
     std::vector<bool> *visit_record;
     std::vector<std::vector<int>> listOfnodes;
+
 public:
     void BFS(int i);
     void DFS(int i);
+    void addEdge(std::vector<int> &nodes);
+    bool BFS_FindPath(int start, int end);
+
 };
 
 
@@ -44,6 +49,9 @@ public:
     void preOrderTraversal(node* target);
     void postOrderTraversal(node* target);
     void visit(node* target);
+
+    CP4_Tree createMinimalBST(std::vector<int> &arr);
+    node* createMinimalBST(std::vector<int> &arr, int start, int end);
 };
 
 
