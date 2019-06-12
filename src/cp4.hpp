@@ -14,6 +14,8 @@
 #include<bitset>
 #include<deque>
 #include<stack>
+#include<climits>
+
 
 typedef struct node{
     std::string name;
@@ -49,6 +51,14 @@ public:
     void preOrderTraversal(node* target);
     void postOrderTraversal(node* target);
     void visit(node* target);
+    bool checkBalanced(node* root);
+    bool checkBST(node* root);
+    bool checkBST(node* root, int min, int max);
+    int checkHeight(node* root);
+    std::vector<std::vector<int>> treeToList(CP4_Tree& tree);
+    void treeToList(node* root, int level, std::vector<std::vector<int>> &arr);
+
+
 
     CP4_Tree createMinimalBST(std::vector<int> &arr);
     node* createMinimalBST(std::vector<int> &arr, int start, int end);

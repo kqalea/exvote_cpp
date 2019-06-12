@@ -49,3 +49,39 @@ TEST_CASE("CP4 Minimal Tree"){
     cp4.preOrderTraversal(tree.root);
     std::cout << std::endl;
 }
+
+TEST_CASE("CP4 treeToListbyLevel"){
+    CP4 cp4;
+    std::vector<int> arr = {1,2,3,4,5,6,7,8,9};
+    CP4_Tree tree = cp4.createMinimalBST(arr);
+    std::vector<std::vector<int>> list = cp4.treeToList(tree);
+    for(auto x : list){
+        for(auto y : x){
+            std::cout << y <<" ";
+        }
+        std::cout << "\n";
+    }
+
+}
+
+TEST_CASE("CP4 checkBalanced"){
+    CP4 cp4;
+    std::vector<int> arr = {1,2,3,4,5,6,7,8,9};
+    CP4_Tree tree = cp4.createMinimalBST(arr);
+    REQUIRE(cp4.checkBalanced(tree.root));
+    node* n = new node;
+    tree.root->left->right->right->right = n;
+    REQUIRE(!cp4.checkBalanced(tree.root));
+}
+
+TEST_CASE("CP4 checkBST"){
+    CP4 cp4;
+    std::vector<int> arr = {1,2,3,4,5,6,7,8,9};
+    CP4_Tree tree = cp4.createMinimalBST(arr);
+    REQUIRE(cp4.checkBST(tree.root));
+    node* n = new node;
+    n->val = 100;
+    tree.root->left->right->right->right = n;
+    REQUIRE(!cp4.checkBST(tree.root));
+
+}
