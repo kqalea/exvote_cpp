@@ -22,6 +22,7 @@ typedef struct node{
     int val;
     node *left = nullptr;
     node *right = nullptr;
+    node *parent = nullptr;
 }node;
 
 class CP4_Tree{
@@ -32,15 +33,18 @@ public:
 class CP4_Graph{
 private:
     bool directed = false;
-    int nodes = 0;
-    std::vector<bool> *visit_record;
-    std::vector<std::vector<int>> listOfnodes;
+
 
 public:
     void BFS(int i);
     void DFS(int i);
+    int topoVisit(int node, std::vector<int>& result);
     void addEdge(std::vector<int> &nodes);
     bool BFS_FindPath(int start, int end);
+    std::vector<bool> *visit_record;
+    std::vector<bool> *tempRecord;
+    int nodes = 0;
+    std::vector<std::vector<int>> listOfnodes;
 
 };
 
@@ -57,11 +61,10 @@ public:
     int checkHeight(node* root);
     std::vector<std::vector<int>> treeToList(CP4_Tree& tree);
     void treeToList(node* root, int level, std::vector<std::vector<int>> &arr);
-
-
-
     CP4_Tree createMinimalBST(std::vector<int> &arr);
     node* createMinimalBST(std::vector<int> &arr, int start, int end);
+    node* inOrderSucc(node* n);
+    std::vector<int> DFS_Topological(CP4_Graph &graph);
 };
 
 

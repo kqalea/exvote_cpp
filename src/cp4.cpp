@@ -103,7 +103,6 @@ void CP4_Graph::DFS(int i){
 
 }
 
-
 bool CP4_Graph::BFS_FindPath(int start, int end){
     std::vector<int>::iterator it;
     visit_record = new std::vector<bool>(nodes, false);
@@ -144,7 +143,9 @@ node* CP4::createMinimalBST(std::vector<int> &arr, int start, int end){
     int mid = (start+end)/2;
     root->val = arr[mid];
     root->left = createMinimalBST(arr, start, mid-1);
+    if(root->left != nullptr) root->left->parent = root;
     root->right = createMinimalBST(arr, mid + 1, end);
+    if(root->right != nullptr) root->right->parent = root;
     return root;
 }
 
@@ -186,3 +187,58 @@ bool CP4::checkBST(node* root, int min, int max){
     return true;
 
 }
+
+node* CP4::inOrderSucc(node* n){
+    if(n == nullptr) return nullptr;
+    if(n->right != nullptr){
+        n = n->right;
+        while(n->left != nullptr){
+            n = n->left;
+        }
+        return n;
+    }else{
+        node* q = n;
+        node* x = q->parent;
+        while(x != nullptr && x->left != q){
+            q = x;
+            x = x->parent;
+        }
+        return x;
+    }
+}
+
+
+int CP4_Graph::topoVisit(int node, std::vector<int>& result){
+    if(this->visit_record->at(node) == true) return 0;
+    //if(this->tempRecord->at(node) == true) return -1;
+    this->tempRecord->at(node) = true;
+    for(std::vector<int>::iterator it = listOfnodes[node].begin(); it != listOfnodes[node].end(); ++it){
+        if(*it < 0) continue;
+        topoVisit((int)*it, result);
+    }
+
+    this->tempRecord->at(node) = false;
+    this->visit_record->at(node) = true;
+    result.insert(result.begin(),node);
+    return 0;
+
+}
+
+std::vector<int> CP4::DFS_Topological(CP4_Graph &graph){
+
+    graph.visit_record = new std::vector<bool>(graph.nodes, false);
+    graph.tempRecord = new std::vector<bool>(graph.nodes, false);
+    std::vector<int> result;
+    int size = graph.nodes;
+    int node = 0;
+    if(graph.topoVisit(node, result) == 0){
+        return result;
+    }else{
+        result.clear();
+        return result;
+    }
+}
+
+
+
+
