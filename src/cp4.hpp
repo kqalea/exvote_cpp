@@ -65,6 +65,7 @@ public:
     node* createMinimalBST(std::vector<int> &arr, int start, int end);
     node* inOrderSucc(node* n);
     std::vector<int> DFS_Topological(CP4_Graph &graph);
+    node* CommonAncestor(node* root, int val_left, int val_right);
 };
 
 

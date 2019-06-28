@@ -239,6 +239,29 @@ std::vector<int> CP4::DFS_Topological(CP4_Graph &graph){
     }
 }
 
+node* CP4::CommonAncestor(node* root, int val_left, int val_right){
+    if(root == nullptr) return nullptr;
+    if(root->val == val_left && root->val == val_right) return root;
+
+    node* node_x = CommonAncestor(root->left, val_left, val_right);
+    if(node_x != nullptr && node_x->val != val_left && node_x->val != val_right){
+        return node_x;
+    }
+
+    node* node_y = CommonAncestor(root->right, val_left, val_right);
+    if(node_y != nullptr && node_y->val != val_left && node_y->val != val_right){
+        return node_y;
+    }
+
+    if(node_x != nullptr && node_y != nullptr){
+        return root;
+    }else if((root->val == val_left) || (root->val == val_right)){
+        return root;
+    }else{
+        return node_x == nullptr ? node_y : node_x;
+    }
+}
+
 
 
 

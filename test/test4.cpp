@@ -127,4 +127,13 @@ TEST_CASE("CP4 DFS_Topological"){
     std::cout << std::endl;
 }
 
+TEST_CASE("CP4 CommonAncestor"){
+    CP4 cp4;
+    std::vector<int> arr = {1,2,3,4,5,6,7,8,9};
+    CP4_Tree tree = cp4.createMinimalBST(arr);
+    node* answer = cp4.CommonAncestor(tree.root, 6, 9);
 
+    REQUIRE(answer->val == 7);
+    REQUIRE(answer->Ancestor);
+
+}
