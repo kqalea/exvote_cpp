@@ -262,6 +262,45 @@ node* CP4::CommonAncestor(node* root, int val_left, int val_right){
     }
 }
 
+std::vector<std::vector<int>> CP4::allSequences(node* n){
 
+    if(n == nullptr){
+        std::vector<std::vector<int>> v;
+        std::vector<int> seq;
+        v.push_back(seq);
+        return v;
+    }
 
+    if(n->left == nullptr && n->right == nullptr){
+        std::vector<int> seq;
+        seq.push_back(n->val);
+        std::vector<std::vector<int>> v;
+        v.push_back(seq);
+        return v;
+    }
+
+    std::vector<std::vector<int>> results, left, right;
+    left = allSequences(n->left);
+    right = allSequences(n->right);
+    int size = left[0].size() + right[0].size() + 1;
+
+    std::vector<bool>flags(left[0].size(), false);
+    for(int k=0; k<right[0].size(); ++k){
+        flags.push_back(true);
+    }
+    for(int i=0; i<left.size(); i++){
+        for(int j=0; j<right.size(); j++){
+            do{
+                std::vector<int> tmp(size);
+                tmp[0] = n->val;
+                int l=0, r=0;
+                for(int z=0; z<flags.size();z++){
+                    tmp[z+1] = (flags[z]) ? right[j][r++] : left[i][l++];
+                }
+                results.push_back(tmp);
+            }while(std::next_permutation(flags.begin(), flags.end()));
+        }
+    }
+    return results;
+}
 

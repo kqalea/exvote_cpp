@@ -134,6 +134,24 @@ TEST_CASE("CP4 CommonAncestor"){
     node* answer = cp4.CommonAncestor(tree.root, 6, 9);
 
     REQUIRE(answer->val == 7);
-    REQUIRE(answer->Ancestor);
+
+}
+
+TEST_CASE("CP4 BST_Sequences"){
+    CP4 cp4;
+    std::vector<int> arr = {1,2,3,4,5};
+    CP4_Tree tree = cp4.createMinimalBST(arr);
+
+    std::cout <<"BST_Sqeunces" <<std::endl;
+    std::cout << "-------------------------\n";
+    std::vector<std::vector<int>> answer2 = cp4.allSequences(tree.root);
+    for(std::vector<std::vector<int>>::iterator it = answer2.begin(); it!= answer2.end(); ++it){
+        std::vector<int> v = *it;
+        for(std::vector<int>::iterator it2 = v.begin(); it2 != v.end(); ++it2){
+            std::cout << *it2;
+        }
+        std::cout <<"\n";
+    }
+
 
 }

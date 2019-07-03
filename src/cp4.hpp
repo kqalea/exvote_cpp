@@ -15,7 +15,8 @@
 #include<deque>
 #include<stack>
 #include<climits>
-
+#include<list>
+#include<algorithm>
 
 typedef struct node{
     std::string name;
@@ -66,6 +67,7 @@ public:
     node* inOrderSucc(node* n);
     std::vector<int> DFS_Topological(CP4_Graph &graph);
     node* CommonAncestor(node* root, int val_left, int val_right);
+    std::vector<std::vector<int>> allSequences(node* n);
 };
 
 
