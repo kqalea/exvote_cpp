@@ -68,6 +68,8 @@ public:
     std::vector<int> DFS_Topological(CP4_Graph &graph);
     node* CommonAncestor(node* root, int val_left, int val_right);
     std::vector<std::vector<int>> allSequences(node* n);
+    bool containsTree(node *t1, node *t2);
+
 };
 
 

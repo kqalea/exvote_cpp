@@ -155,3 +155,18 @@ TEST_CASE("CP4 BST_Sequences"){
 
 
 }
+
+TEST_CASE("CP4 containsTree"){
+    CP4 cp4;
+    std::vector<int> arr;
+    for(int i=0; i<10000; i++){
+        arr.push_back(i);
+    }
+    CP4_Tree tree = cp4.createMinimalBST(arr);
+    node* target = tree.root->left->left->right->left;
+    std::cout << "val=" << target->val << "\n";
+
+    REQUIRE(cp4.containsTree(tree.root, target));
+
+
+}

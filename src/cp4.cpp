@@ -304,3 +304,28 @@ std::vector<std::vector<int>> CP4::allSequences(node* n){
     return results;
 }
 
+bool matchTree(node* t1, node* t2){
+    if(t1 == nullptr && t2 == nullptr){
+        return true;
+    }else if(t1 == nullptr || t2 == nullptr){
+        return false;
+    }else if(t1->val != t2->val){
+        return false;
+    }else{
+        return matchTree(t1->left, t2->left);
+    }
+}
+
+bool subtree(node* t1, node* t2){
+    if(t1 == nullptr){
+        return false;
+    }else if(t1->val == t2->val && matchTree(t1, t2)){
+        return true;
+    }
+    return subtree(t1->left,t2) || subtree(t1->right,t2);
+}
+
+bool CP4::containsTree(node* t1, node* t2){
+    if(t2 == nullptr) return true;
+    return subtree(t1, t2);
+}
