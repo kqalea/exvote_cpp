@@ -9,7 +9,7 @@
 
 
 void CP4::visit(node* target){
-    std::cout << target->val;
+    std::cout << target->val << ", ";
 }
 
 void CP4::inOrderTraversal(node* target){
@@ -329,3 +329,37 @@ bool CP4::containsTree(node* t1, node* t2){
     if(t2 == nullptr) return true;
     return subtree(t1, t2);
 }
+
+CP4_TreeNode* CP4_TreeNode::getRandomNode(int i){
+    return getIthNode(i);
+}
+
+CP4_TreeNode* CP4_TreeNode::getIthNode(int i){
+    int leftsize = this->leftNode == nullptr ? 0 : this->leftNode->size;
+    if(i < leftsize){
+        return leftNode->getIthNode(i);
+    }else if(i == leftsize) {
+        return this;
+    }else{
+        return rightNode->getIthNode(i-(leftsize+1));
+    }
+}
+
+void CP4_TreeNode::InsertInOrder(int i){
+    if(i <= this->data){
+        if(this->leftNode == nullptr){
+            this->leftNode = new CP4_TreeNode(i);
+        }else{
+            this->leftNode->InsertInOrder(i);
+        }
+    }else{
+        if(this->rightNode == nullptr){
+            this->rightNode = new CP4_TreeNode(i);
+        }else{
+            this->rightNode->InsertInOrder(i);
+        }
+    }
+    this->size++;
+}
+
+

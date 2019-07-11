@@ -17,6 +17,9 @@
 #include<climits>
 #include<list>
 #include<algorithm>
+#include<random>
+#include<chrono>
+#include<functional>
 
 typedef struct node{
     std::string name;
@@ -29,6 +32,24 @@ typedef struct node{
 class CP4_Tree{
 public:
     node *root;
+};
+
+class CP4_TreeNode{
+public:
+    int data, size;
+    CP4_TreeNode* leftNode;
+    CP4_TreeNode* rightNode;
+    CP4_TreeNode();
+    CP4_TreeNode(int i){
+        data = i;
+        size = 1;
+        leftNode = nullptr;
+        rightNode = nullptr;
+    }
+
+    CP4_TreeNode* getRandomNode(int i);
+    CP4_TreeNode* getIthNode(int i);
+    void InsertInOrder(int i);
 };
 
 class CP4_Graph{

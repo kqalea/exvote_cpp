@@ -170,3 +170,46 @@ TEST_CASE("CP4 containsTree"){
 
 
 }
+
+
+void setup(std::vector<int>& arr, node* n){
+    if(n != nullptr){
+        arr.push_back(n->val);
+        setup(arr, n->left);
+        setup(arr, n->right);
+    }
+}
+
+TEST_CASE("CP4 RandomNode"){
+    CP4_TreeNode root(10);
+    auto seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine randomEngine = std::default_random_engine(seed);
+    std::uniform_int_distribution<int> dist(0, 20);
+    int rand;
+
+    std::vector<int> arr;
+    for(int i=0;i<10;++i){
+        arr.push_back(dist(randomEngine));
+    }
+    std::sort(arr.begin(), arr.end());
+    CP4 cp4;
+    CP4_Tree tree = cp4.createMinimalBST(arr);
+    std::vector<int> target;
+    setup(target, tree.root);
+    CP4_TreeNode treeNode(target[0]);
+    for(auto it = target.begin()+1; it != target.end(); ++it){
+        treeNode.InsertInOrder(*it);
+        std::cout << *it << "\n";
+    }
+    auto seed2 = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine randomEngine2 = std::default_random_engine(seed2);
+    std::uniform_int_distribution<int> dist2(0, treeNode.size-1);
+
+    std::cout << treeNode.getRandomNode(dist2(randomEngine2))->data << "\n";
+    std::cout << treeNode.getRandomNode(dist2(randomEngine2))->data << "\n";
+    std::cout << treeNode.getRandomNode(dist2(randomEngine2))->data << "\n";
+    std::cout << treeNode.getRandomNode(dist2(randomEngine2))->data << "\n";
+    std::cout << treeNode.getRandomNode(dist2(randomEngine2))->data << "\n";
+
+
+}
