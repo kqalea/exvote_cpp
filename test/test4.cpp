@@ -213,3 +213,38 @@ TEST_CASE("CP4 RandomNode"){
 
 
 }
+
+TEST_CASE("CP4 PathOfSum"){
+    node *root;
+    node* tmp = new node;
+    tmp->val = 10;
+    root = tmp;
+    tmp = new node;
+    tmp->val = 5;
+    root->left = tmp;
+    tmp = new node;
+    tmp->val = -3;
+    root->right = tmp;
+    tmp = new node;
+    tmp->val = 3;
+    root->left->left = tmp;
+    tmp = new node;
+    tmp->val = 2;
+    root->left->right = tmp;
+    tmp = new node;
+    tmp->val = 11;
+    root->right->right = tmp;
+    tmp = new node;
+    tmp->val = 3;
+    root->left->left->left = tmp;
+    tmp = new node;
+    tmp->val = -2;
+    root->left->left->right = tmp;
+    tmp = new node;
+    tmp->val = 1;
+    root->left->right->right = tmp;
+
+    CP4_PathOfSum ps;
+    REQUIRE(ps.pathSum(root, 8) == 3);
+
+}

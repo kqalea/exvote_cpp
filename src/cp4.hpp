@@ -20,6 +20,7 @@
 #include<random>
 #include<chrono>
 #include<functional>
+#include<unordered_map>
 
 typedef struct node{
     std::string name;
@@ -94,6 +95,19 @@ public:
 };
 
 
+class CP4_PathOfSum{
+public:
+    int rootSum(node* root, int sum) {
+        if (root == nullptr)
+            return 0;
+        return (sum == root->val) + rootSum(root->left, sum - root->val) + rootSum(root->right, sum - root->val);
+    }
 
+    int pathSum(node* root, int sum) {
+        if (root == nullptr)
+            return 0;
+        return rootSum(root, sum) + pathSum(root->left, sum) + pathSum(root->right, sum);
+    }
+};
 
 #endif /* SRC_CP4_HPP_ */
