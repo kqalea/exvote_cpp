@@ -7,10 +7,13 @@ add_executable(exvote
   src/cp3.hpp /
   src/cp3.cpp /
   src/cp4.hpp /
-  src/cp4.cpp
+  src/cp4.cpp /
+  src/cp5.hpp /
+  src/cp5.cpp /
   test/catch.hpp /
   test/test3.cpp /
-  test/test4.cpp
+  test/test4.cpp /
+  test/test5.cpp
 )
 #backup
 #add_executable(exvote
